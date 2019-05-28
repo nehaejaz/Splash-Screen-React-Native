@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {StyleSheet, Text ,TextInput, View,Image,SafeAreaView} from 'react-native'
+import {StyleSheet, Text ,TextInput, View,Image,SafeAreaView,TouchableOpacity} from 'react-native'
 
 class Login extends Component{
     render(){
@@ -11,8 +11,22 @@ class Login extends Component{
             <Text style={styles.title}>Account Information</Text>
             </View>
             <View style={styles.infoContainer}>
-                <Text>Enter Email</Text>
-            <TextInput style={styles.input}></TextInput>
+            <TextInput style={styles.input}
+             placeholder="Enter Email"
+             keyboardType="email-address"
+             returnKeyType="next"
+             autoCorrect={false}
+             onSubmitEditing={()=> this.refs.passwordInput.focus()}
+            ></TextInput>
+            <TextInput style={styles.input}
+             placeholder="password"
+             returnKeyType="go"
+             secureTextEntry={true}
+             ref={"passwordInput"}
+            ></TextInput>
+            <TouchableOpacity style={styles.buttonContainer}>
+                <Text style={styles.buttonTitle}>Login</Text>
+            </TouchableOpacity>
             </View>
         </View>
         </SafeAreaView>
@@ -43,16 +57,37 @@ const styles= StyleSheet.create({
          marginTop:5,
     },
     infoContainer: {
-        position:'absolute',
-        left:0,
-        right:0,
-        bottom:0,
+        // position:'absolute',
+        // flex:1,
+        // justifyContent:'center',
+        // left:0,
+        // right:0,
+        // bottom:0,
         height:200,
-        padding:20
+        // padding:20,
+        width:250,
+        // backgroundColor:"pink"
+        // backgroundColor:"blue",
+        flex:1,
+        alignItems:'center',
+        justifyContent: 'center',
     },
     input: {
         height:40,
-        backgroundColor:'grey',
+        backgroundColor:'white',
+        marginTop:10,
+        width:250,
+    },
+    buttonContainer:{
+        backgroundColor: "red",
+        marginTop:10,
+        width:100,
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    buttonTitle:{
+        color:"white",
+        fontWeight:"bold"
     }
 
 })
